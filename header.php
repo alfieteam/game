@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Game v 0.0.1</title>
+<title>Game v 0.0.4</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -13,12 +13,17 @@
 		<div id="nav_div">
 <?php
 	if(isset($_SESSION['uid'])){
-		echo "Вы авторизированы<br><a href='exit.php'>Выйти</a>";
+		echo "Вы авторизированы<br>";
+		echo "<a href='main.php'>Main</a>";
 	}else{
-		echo "Вы не авторизированы<br><a href='login.php'>Войти</a>";
+?>
+		<form action="login.php" method="post">
+			Username:<br><input type="text" class="loginform" name="username"><br><br>
+			Password:<br><input type="password" class="loginform" name="password"><br><br>
+			<input type="submit" name="login" value="Login">
+		</form>
+<?php
 	}
-
-
 ?>
 		</div>
 	</div>
