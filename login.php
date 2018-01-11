@@ -1,6 +1,5 @@
 <?php 
 session_start();
-include("functions.php");
 include("header.php");
 
 if(isset($_POST['login'])){

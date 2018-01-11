@@ -1,7 +1,6 @@
 <?php
 session_start();
 include("header.php");
-include("functions.php");
 connect();
 
 if(isset($_POST['register'])){
