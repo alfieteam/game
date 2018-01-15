@@ -8,6 +8,17 @@ body{
 	font-size: 18pt;
 	border: 1px solid #000000;
 }
+
+#output{
+	margin-left: 25%;
+	margin-right: 25%;
+	padding: 10px;
+	border:1px solid #898989;
+	font-weight: : bold;
+	color: red;
+	text-align: center;
+}
+
 #container{
 	overflow: hidden;
 }

@@ -14,6 +14,9 @@ function protect($string){
 	return mysqli_real_escape_string(connect(), strip_tags(addslashes($string)));
 }
 
+function output($string){
+	echo "<div id=\"output\">".$string."</div>";
+}
 
 
 ?>
