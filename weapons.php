@@ -28,6 +28,7 @@ if(!isset($_SESSION['uid'])){
 															`gold` = '".$stats['gold']."' 
 															WHERE `id` = '".$_SESSION['uid']."'")
 															or die(mysqli_error());
+					include("update_stats.php");
 					header('location: weapons.php');
 				}
 			}
@@ -56,6 +57,7 @@ if(!isset($_SESSION['uid'])){
 															`gold` = '".$stats['gold']."' 
 															WHERE `id` = '".$_SESSION['uid']."'")
 															or die(mysqli_error());
+					include("update_stats.php");
 					header('location: weapons.php');
 				}
 			}
@@ -84,6 +86,7 @@ if(!isset($_SESSION['uid'])){
 															`gold` = '".$stats['gold']."' 
 															WHERE `id` = '".$_SESSION['uid']."'")
 															or die(mysqli_error());
+					include("update_stats.php");
 					header('location: weapons.php');
 				}
 			}
@@ -112,6 +115,7 @@ if(!isset($_SESSION['uid'])){
 															`gold` = '".$stats['gold']."' 
 															WHERE `id` = '".$_SESSION['uid']."'")
 															or die(mysqli_error());
+					include("update_stats.php");
 					header('location: weapons.php');
 				}
 			}

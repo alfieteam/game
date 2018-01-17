@@ -5,73 +5,6 @@ include("header.php");
 if(!isset($_SESSION['uid'])){
 	echo "Вы не авторизированы, авторизируйтесь!";
 }elseif(isset($_SESSION['uid'])){
-	/* if(isset($_POST['train'])){
-		$worker = number_format(protect($_POST['worker']));
-		$farmer = number_format(protect($_POST['farmer']));
-		$warrior = number_format(protect($_POST['warrior']));
-		$defender = number_format(protect($_POST['defender']));
-		$food_needed = (10 * $worker) + (10 * $farmer) + (10 * $warrior) + (10 * $defender);
-		// food_needed плюсует всё что было в форме и умножает на 10, давая общую цифру изьятия еды.
-		if($worker <= 0 || $farmer <= 0 || $warrior <= 0 || $defender <= 0){
-			output("You must train a positive number of units!");
-			echo "Количество food: ".$stats['food'];  //Для теста, позже удалить
-		}
-		elseif($stats['food'] < $food_needed){
-			output("You do not have enough food!");
-		}
-		else{
-			$unit['worker'] += $worker;
-			$unit['farmer'] += $farmer;
-			$unit['warrior'] += $warrior;
-			$unit['defender'] += $defender;
-
-			$update_unit = mysqli_query(connect(),"UPDATE `unit` SET
-													`worker` = '".$unit['worker']."',
-													`farmer` = '".$unit['farmer']."',
-													`warrior` = '".$unit['warrior']."',
-													`defender` = '".$unit['defender']."'
-													WHERE `id` = '".$_SESSION['uid']."'")
-													or die(mysqli_error());
-			$stats['food'] -= $food_needed;
-			$update_food = mysqli_query(connect(),"UPDATE `stats` SET
-													`food` = '".$stats['food']."'
-													WHERE `id` = '".$_SESSION['uid']."'")
-													or die(mysqli_error());
-			output("You have trained your units!");
-		}
-	}
-	elseif(isset($_POST['untrain'])){
-		$worker = is_numeric(protect($_POST['worker']));
-		$farmer = is_numeric(protect($_POST['farmer']));
-		$warrior = is_numeric(protect($_POST['warrior']));
-		$defender = is_numeric(protect($_POST['defender']));
-		$food_needed = (8 * $worker) + (8 * $farmer) + (8 * $warrior) + (8 * $defender);
-		if($worker <= 0 || $farmer <= 0 || $warrior <= 0 || $defender <= 0){
-			outpet("You must untrain a positive number of units!");
-		}elseif($worker > $unit['worker'] || $farmer > $unit['farmer'] || 
-				$warrior > $unit['warrior'] || $defender > $unit['defender']){
-			output("You do not have that many units to untrane!");
-		}else{
-			$unit['worker'] -= $worker;
-			$unit['farmer'] -= $farmer;
-			$unit['warrior'] -= $warrior;
-			$unit['defender'] -= $defender;
-
-			$update_unit = mysqli_query(connect(),"UPDATE `unit` SET
-													`worker` = '".$unit['worker']."',
-													`farmer` = '".$unit['farmer']."',
-													`warrior` = '".$unit['warrior']."',
-													`defender` = '".$unit['defender']."'
-													WHERE `id` = '".$_SESSION['uid']."'")
-													or die(mysqli_error());
-			$stats['food'] += $food_needed;
-			$update_food = mysqli_query(connect(),"UPDATE `stats` SET
-													`food` = '".$stats['food']."'
-													WHERE `id` = '".$_SESSION['uid']."'")
-													or die(mysqli_error());
-			output("You have untrained your units!");
-		}
-	} */
 	if(isset($_POST['train_worker'])){
 		if($_POST['worker'] == null){
 			output("Вы не ввели значения!");
@@ -98,6 +31,7 @@ if(!isset($_SESSION['uid'])){
 															`food` = '".$stats['food']."'
 															WHERE `id` = '".$_SESSION['uid']."'")
 															or die(mysqli_error());
+					include("update_stats.php");
 					header('location: units.php');
 				}
 			}
@@ -127,6 +61,7 @@ if(!isset($_SESSION['uid'])){
 															`food` = '".$stats['food']."'
 															WHERE `id` = '".$_SESSION['uid']."'")
 															or die(mysqli_error());
+					include("update_stats.php");
 					header('location: units.php');
 				}
 			}
@@ -159,6 +94,7 @@ if(!isset($_SESSION['uid'])){
 															`food` = '".$stats['food']."'
 															WHERE `id` = '".$_SESSION['uid']."'")
 															or die(mysqli_error());
+					include("update_stats.php");
 					header('location: units.php');
 				}
 			}
@@ -188,6 +124,7 @@ if(!isset($_SESSION['uid'])){
 															`food` = '".$stats['food']."'
 															WHERE `id` = '".$_SESSION['uid']."'")
 															or die(mysqli_error());
+					include("update_stats.php");
 					header('location: units.php');
 				}
 			}
@@ -220,6 +157,7 @@ if(!isset($_SESSION['uid'])){
 															`food` = '".$stats['food']."'
 															WHERE `id` = '".$_SESSION['uid']."'")
 															or die(mysqli_error());
+					include("update_stats.php");
 					header('location: units.php');
 				}
 			}
@@ -249,6 +187,7 @@ if(!isset($_SESSION['uid'])){
 															`food` = '".$stats['food']."'
 															WHERE `id` = '".$_SESSION['uid']."'")
 															or die(mysqli_error());
+					include("update_stats.php");
 					header('location: units.php');
 				}
 			}
@@ -281,6 +220,7 @@ if(!isset($_SESSION['uid'])){
 															`food` = '".$stats['food']."'
 															WHERE `id` = '".$_SESSION['uid']."'")
 															or die(mysqli_error());
+					include("update_stats.php");
 					header('location: units.php');
 				}
 			}
@@ -310,6 +250,7 @@ if(!isset($_SESSION['uid'])){
 															`food` = '".$stats['food']."'
 															WHERE `id` = '".$_SESSION['uid']."'")
 															or die(mysqli_error());
+					include("update_stats.php");
 					header('location: units.php');
 				}
 			}
