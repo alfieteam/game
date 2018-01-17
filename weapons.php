@@ -10,17 +10,26 @@ if(!isset($_SESSION['uid'])){
 			output("Вы не ввели значение/тест на null");
 		}
 		else{
-			$sword = number_format(protect($_POST['sword']));
-			$gold_needed = (10 * $sword);
-			if($sword <= 0){
-				output("проверка на отрицание и 0");
-			}elseif($stats['gold'] < $gold_needed){
-				output("Проверка на достаточно ли денег, не достаточно!");
-			}else{
-				$weapon['sword'] += $sword;
-				$update_sword = mysqli_query(connect(),"UPDATE `weapon` SET `sword` = '".$weapon['sword']."' WHERE `id` = '".$_SESSION['uid']."' ") or die(mysqli_error());
-				$stats['gold'] -= $gold_needed;
-				$update_gold = mysqli_query(connect(),"UPDATE `stats` SET `gold` = '".$stats['gold']."' WHERE `id` = '".$_SESSION['uid']."' ") or die(mysqli_error());
+			$sword = protect($_POST['sword']);
+			if(is_numeric($sword)){
+				$gold_needed = (10 * $sword);
+				if($sword <= 0){
+					output("проверка на отрицание и 0");
+				}elseif($stats['gold'] < $gold_needed){
+					output("Проверка на достаточно ли денег, не достаточно!");
+				}else{
+					$weapon['sword'] += $sword;
+					$stats['gold'] -= $gold_needed;
+					$update_sword = mysqli_query(connect(),"UPDATE `weapon` SET 
+															`sword` = '".$weapon['sword']."' 
+															WHERE `id` = '".$_SESSION['uid']."'")
+															or die(mysqli_error());
+					$update_gold = mysqli_query(connect(),"UPDATE `stats` SET 
+															`gold` = '".$stats['gold']."' 
+															WHERE `id` = '".$_SESSION['uid']."'")
+															or die(mysqli_error());
+					header('location: weapons.php');
+				}
 			}
 		}
 	}
@@ -29,17 +38,26 @@ if(!isset($_SESSION['uid'])){
 			output("Вы не ввели значение/тест на null");
 		}
 		else{
-			$sword = number_format(protect($_POST['sword']));
-			$gold_add = (8 * $sword);
-			if($sword <= 0){
-				output("проверка на отрицание и 0");
-			}elseif($weapon['sword'] <= 0){
-				output("Проверка на достаточно ли мечей, меньше или равно нулю!");
-			}else{
-				$weapon['sword'] -= $sword;
-				$update_sword = mysqli_query(connect(),"UPDATE `weapon` SET `sword` = '".$weapon['sword']."' WHERE `id` = '".$_SESSION['uid']."' ") or die(mysqli_error());
-				$stats['gold'] += $gold_add;
-				$update_gold = mysqli_query(connect(),"UPDATE `stats` SET `gold` = '".$stats['gold']."' WHERE `id` = '".$_SESSION['uid']."' ") or die(mysqli_error());
+			$sword = protect($_POST['sword']);
+			if(is_numeric($sword)){
+				$gold_add = (8 * $sword);
+				if($sword <= 0){
+					output("проверка на отрицание и 0");
+				}elseif($weapon['sword'] < $sword){
+					output(" наличие < количество на продажу!");
+				}else{
+					$weapon['sword'] -= $sword;
+					$stats['gold'] += $gold_add;
+					$update_sword = mysqli_query(connect(),"UPDATE `weapon` SET 
+															`sword` = '".$weapon['sword']."' 
+															WHERE `id` = '".$_SESSION['uid']."'")
+															or die(mysqli_error());
+					$update_gold = mysqli_query(connect(),"UPDATE `stats` SET 
+															`gold` = '".$stats['gold']."' 
+															WHERE `id` = '".$_SESSION['uid']."'")
+															or die(mysqli_error());
+					header('location: weapons.php');
+				}
 			}
 		}
 	}
@@ -48,17 +66,26 @@ if(!isset($_SESSION['uid'])){
 			output("Вы не ввели значение/тест на null");
 		}
 		else{
-			$shield = number_format(protect($_POST['shield']));
-			$gold_needed = (10 * $shield);
-			if($shield <= 0){
-				output("проверка на отрицание и 0");
-			}elseif($stats['gold'] < $gold_needed){
-				output("Проверка на достаточно ли денег, не достаточно!");
-			}else{
-				$weapon['shield'] += $shield;
-				$update_shield = mysqli_query(connect(),"UPDATE `weapon` SET `shield` = '".$weapon['shield']."' WHERE `id` = '".$_SESSION['uid']."' ") or die(mysqli_error());
-				$stats['gold'] -= $gold_needed;
-				$update_gold = mysqli_query(connect(),"UPDATE `stats` SET `gold` = '".$stats['gold']."' WHERE `id` = '".$_SESSION['uid']."' ") or die(mysqli_error());
+			$shield = protect($_POST['shield']);
+			if(is_numeric($shield)){
+				$gold_needed = (10 * $shield);
+				if($shield <= 0){
+					output("проверка на отрицание и 0");
+				}elseif($stats['gold'] < $gold_needed){
+					output("Проверка на достаточно ли денег, не достаточно!");
+				}else{
+					$weapon['shield'] += $shield;
+					$stats['gold'] -= $gold_needed;
+					$update_shield = mysqli_query(connect(),"UPDATE `weapon` SET 
+															`shield` = '".$weapon['shield']."' 
+															WHERE `id` = '".$_SESSION['uid']."'")
+															or die(mysqli_error());
+					$update_gold = mysqli_query(connect(),"UPDATE `stats` SET 
+															`gold` = '".$stats['gold']."' 
+															WHERE `id` = '".$_SESSION['uid']."'")
+															or die(mysqli_error());
+					header('location: weapons.php');
+				}
 			}
 		}
 	}
@@ -67,20 +94,30 @@ if(!isset($_SESSION['uid'])){
 			output("Вы не ввели значение/тест на null");
 		}
 		else{
-			$shield = number_format(protect($_POST['shield']));
-			$gold_add = (8 * $shield);
-			if($shield <= 0){
-				output("проверка на отрицание и 0");
-			}elseif($weapon['shield'] <= 0){
-				output("Проверка на достаточно ли мечей, меньше или равно нулю!");
-			}else{
-				$weapon['shield'] -= $shield;
-				$update_sword = mysqli_query(connect(),"UPDATE `weapon` SET `shield` = '".$weapon['shield']."' WHERE `id` = '".$_SESSION['uid']."' ") or die(mysqli_error());
-				$stats['gold'] += $gold_add;
-				$update_gold = mysqli_query(connect(),"UPDATE `stats` SET `gold` = '".$stats['gold']."' WHERE `id` = '".$_SESSION['uid']."' ") or die(mysqli_error());
+			$shield = protect($_POST['shield']);
+			if(is_numeric($shield)){
+				$gold_add = (8 * $shield);
+				if($shield <= 0){
+					output("проверка на отрицание и 0");
+				}elseif($weapon['shield'] < $shield){
+					output(" наличие < количество на продажу!");
+				}else{
+					$weapon['shield'] -= $shield;
+					$stats['gold'] += $gold_add;
+					$update_shield = mysqli_query(connect(),"UPDATE `weapon` SET 
+															`shield` = '".$weapon['shield']."' 
+															WHERE `id` = '".$_SESSION['uid']."'")
+															or die(mysqli_error());
+					$update_gold = mysqli_query(connect(),"UPDATE `stats` SET 
+															`gold` = '".$stats['gold']."' 
+															WHERE `id` = '".$_SESSION['uid']."'")
+															or die(mysqli_error());
+					header('location: weapons.php');
+				}
 			}
 		}
 	}
+				
 
 
 ?>
@@ -97,22 +134,22 @@ if(!isset($_SESSION['uid'])){
 				<td><b>Weapon Type</b></td>
 				<td><b>Number of Weapons</b></td>
 				<td><b>Amount</b></td>
-				<td><b>10 Gold</b></td>
-				<td><b>8 Gold</b></td>
+				<td><b>Cost: 10</b></td>
+				<td><b>Cost: 8</b></td>
 			</tr>
 			<tr>
 				<td>Sword</td>
 				<td><?php echo number_format($weapon['sword']);  ?></td>
 				<td><input type="number" name="sword"></td>
-				<td><input type="submit" name="buy_sword" value="Buy"></td>
-				<td><input type="submit" name="sell_sword" value="Sell"></td>
+				<td><input type="submit" name="buy_sword" value="    Buy   "></td>
+				<td><input type="submit" name="sell_sword" value="  Sell  "></td>
 			</tr>
 			<tr>
 				<td>Shield</td>
 				<td><?php echo number_format($weapon['shield']);  ?></td>
 				<td><input type="number" name="shield"></td>
-				<td><input type="submit" name="buy_shield" value="Buy"></td>
-				<td><input type="submit" name="sell_shield" value="Sell"></td>
+				<td><input type="submit" name="buy_shield" value="    Buy   "></td>
+				<td><input type="submit" name="sell_shield" value="  Sell  "></td>
 			</tr>
 		</table>
 	</form>
