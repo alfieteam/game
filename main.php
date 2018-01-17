@@ -31,8 +31,16 @@ if(!isset($_SESSION['uid'])){
 			<td><i><?php echo $stats['gold'];?></i></td>
 		</tr>
 		<tr>
+			<td>Income:</td>
+			<td><i><?php echo $stats['income'];?></i></td>
+		</tr>
+		<tr>
 			<td>Food:</td>
 			<td><i><?php echo $stats['food'];?></i></td>
+		</tr>
+		<tr>
+			<td>Farming:</td>
+			<td><i><?php echo $stats['farming'];?></i></td>
 		</tr>
 		<tr>
 			<td></td>

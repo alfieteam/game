@@ -2,6 +2,9 @@ body{
 	background-color: #c4c4c4;
 	margin: auto;
 }
+body a{
+	color: #000000;
+}
 #header{
 	background-color: #898989;
 	width: auto;

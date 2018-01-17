@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Game v 0.0.11</title>
+<title>Game v 0.0.12</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>

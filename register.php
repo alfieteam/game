@@ -24,7 +24,7 @@ if(isset($_POST['register'])){
 		}elseif(mysqli_num_rows($register2) > 0){
 			echo "That E-mail addres is already in use!";
 		}else{
-			$ins1 = mysqli_query(connect(),"INSERT INTO `stats` (`gold`,`attack`,`defense`,`food`) VALUES (100,10,10,100)") or die (mysqli_error());
+			$ins1 = mysqli_query(connect(),"INSERT INTO `stats` (`gold`,`attack`,`defense`,`food`) VALUES (100,0,0,100)") or die (mysqli_error());
 			$ins2 = mysqli_query(connect(),"INSERT INTO `unit` (`worker`,`farmer`,`warrior`,`defender`) VALUES (5,5,0,0)") or die (mysqli_error());
 			$ins3 = mysqli_query(connect(),"INSERT INTO `user` (`username`,`password`,`email`) VALUES ('$username','".md5($password)."','$email')") or die (mysqli_error());
 			$ins4 = mysqli_query(connect(),"INSERT INTO `weapon` (`sword`,`shield`) VALUES (0,0)") or die(mysqli_error());

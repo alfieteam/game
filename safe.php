@@ -12,4 +12,7 @@ $user = mysqli_fetch_assoc($user_get);
 $weapon_get = mysqli_query(connect(),"SELECT * FROM `weapon` WHERE `id`='".$_SESSION['uid']."'") or die (mysqli_error());
 $weapon = mysqli_fetch_assoc($weapon_get);
 
+$ranking_get = mysqli_query(connect(),"SELECT * FROM `ranking` WHERE `id`='".$_SESSION['uid']."'") or die (mysqli_error());
+$ranking = mysqli_fetch_assoc($ranking_get);
+
 ?>
