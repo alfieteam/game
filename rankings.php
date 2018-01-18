@@ -24,7 +24,7 @@ if(!isset($_SESSION['uid'])){
 		echo "<td>".$row['overall']."</td>";
 		$get_user = mysqli_query(connect(),"SELECT `username` FROM `user` WHERE `id` = '".$row['id']."'") or die(mysqli_error());
 		$rank_name = mysqli_fetch_assoc($get_user);
-		echo "<td><a href=\"stats.php?id".$row['id']."\">".$rank_name['username']."</a></td>";
+		echo "<td><a href=\"stats.php?id=".$row['id']."\">".$rank_name['username']."</a></td>";
 		$get_gold = mysqli_query(connect(),"SELECT `gold` FROM `stats` WHERE `id` = '".$row['id']."'") or die(mysqli_error());
 		$rank_gold = mysqli_fetch_assoc($get_gold);
 		echo "<td>".number_format($rank_gold['gold'])."</td>";

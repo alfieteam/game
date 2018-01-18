@@ -43,6 +43,10 @@ if(!isset($_SESSION['uid'])){
 			<td><i><?php echo $stats['farming'];?></i></td>
 		</tr>
 		<tr>
+			<td>Turns:</td>
+			<td><i><?php echo $stats['turns'];?></i></td>
+		</tr>
+		<tr>
 			<td></td>
 			<td></td>
 		</tr>
