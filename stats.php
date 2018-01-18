@@ -26,10 +26,14 @@ if(!isset($_SESSION['uid'])){
 			<b>Gold: <?php echo $s_stats['gold']?></b>
 			<br><br>
 			<form action="battle.php" method="post">
-				<i>Attack on <?php echo $s_user['username'];?> in the last 24 hours: ()</i>
+				<?php
+					$attakers_check = mysqli_query(connect(),"SELECT `id` FROM `logs` WHERE `id` = '".$_SESSION['uid']."' AND `defender` = '".$id."'")or die(mysqli_error());
+				?>
+				<i>Attack on <?php echo $s_user['username'];?> in the last 24 hours: (<?php echo mysqli_num_rows($attakers_check);?>/5)</i>
 				<br>Number of Turns(1 - 10):  
 				<input type="number" name="turns"> 
-				<input type="submit" name="attack" value="Attack">
+				<input type="submit" name="gold" value="Raid for Gold">
+				<input type="submit" name="food" value="Raid for Food">
 				<input type="hidden" name="id" value="<?php echo $id;?>">
 			</form>
 
