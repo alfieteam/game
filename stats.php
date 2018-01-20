@@ -24,10 +24,21 @@ if(!isset($_SESSION['uid'])){
 			<b>Rank: <?php echo $s_rank['overall']?></b>
 			<br>
 			<b>Gold: <?php echo $s_stats['gold']?></b>
+			<br>
+			<b>Food: <?php echo $s_stats['food']?></b>
 			<br><br>
 			<form action="battle.php" method="post">
 				<?php
-					$attakers_check = mysqli_query(connect(),"SELECT `id` FROM `logs` WHERE `id` = '".$_SESSION['uid']."' AND `defender` = '".$id."'")or die(mysqli_error());
+					$attakers_check = mysqli_query(connect(),"SELECT `id` FROM `logs` 
+																WHERE `attacker` = '".$_SESSION['uid']."' 
+																AND `defender` = '".$id."' 
+																AND (`time` BETWEEN '".(time() - 86400)."' AND '".time()."')")or die(mysqli_error());
+
+					if(mysqli_num_rows($attakers_check) >= 5){
+				?>
+				<i>Attack on <?php echo $s_user['username'];?> in the last 24 hours: (<?php echo mysqli_num_rows($attakers_check);?>/5)</i>
+				<?php 
+					}else{			
 				?>
 				<i>Attack on <?php echo $s_user['username'];?> in the last 24 hours: (<?php echo mysqli_num_rows($attakers_check);?>/5)</i>
 				<br>Number of Turns(1 - 10):  
@@ -35,6 +46,9 @@ if(!isset($_SESSION['uid'])){
 				<input type="submit" name="gold" value="Raid for Gold">
 				<input type="submit" name="food" value="Raid for Food">
 				<input type="hidden" name="id" value="<?php echo $id;?>">
+				<?php 
+					}
+				?>
 			</form>
 
 

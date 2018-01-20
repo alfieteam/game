@@ -13,6 +13,7 @@ if(!isset($_SESSION['uid'])){
 		<td width="50px"><b>Rank</b></td>
 		<td width="150px"><b>Username</b></td>
 		<td width="200px"><b>Gold</b></td>
+		<td width="200px"><b>Food</b></td>
 	</tr>
 	<?php   
 	$get_users = mysqli_query(connect(),"SELECT `id`, `overall` FROM `ranking`
@@ -28,6 +29,9 @@ if(!isset($_SESSION['uid'])){
 		$get_gold = mysqli_query(connect(),"SELECT `gold` FROM `stats` WHERE `id` = '".$row['id']."'") or die(mysqli_error());
 		$rank_gold = mysqli_fetch_assoc($get_gold);
 		echo "<td>".number_format($rank_gold['gold'])."</td>";
+		$get_food = mysqli_query(connect(),"SELECT `food` FROM `stats` WHERE `id` = '".$row['id']."'") or die(mysqli_error());
+		$rank_food = mysqli_fetch_assoc($get_food);
+		echo "<td>".number_format($rank_food['food'])."</td>";
 		echo "</tr>";
 
 	}
